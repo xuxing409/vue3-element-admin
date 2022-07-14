@@ -1,5 +1,6 @@
+import { storeToRefs } from 'pinia'
 import router from '@/router'
-import useStore from '@/store'
+import appStore from '@/stores'
 
 // 白名单
 const whiteList = ['/login']
@@ -10,15 +11,19 @@ const whiteList = ['/login']
  * @param {*} next 是否放行?
  * @returns
  */
-router.beforeEach((to, from, next) => {
-  const { user } = useStore()
-  // 1.用户已登录，则不允许进入login
-  // 2.用户未登录，则只允许进入login
-  if (user.getToken()) {
+router.beforeEach(async (to, from, next) => {
+  const { token, hasUserInfo } = storeToRefs(appStore.useUserStore)
+  const { getUserInfo } = appStore.useUserStore
+
+  if (token.value) {
     // 1.用户已登录，则不允许进入login
-    if (to.path === 'login') {
+    if (to.path === '/login') {
       next('/')
     } else {
+      // 判断用户资料是否存在，如果不存在，则获取用户信息
+      if (!hasUserInfo.value) {
+        await getUserInfo()
+      }
       next()
     }
   } else {

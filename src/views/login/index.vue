@@ -54,7 +54,7 @@
 <script setup>
 import { ref } from 'vue'
 import { validatePassword } from './rules'
-import useStore from '@/store'
+import appStore from '@/stores'
 // 绑定属性
 const loginForm = ref({
   username: 'super-admin',
@@ -90,8 +90,7 @@ const onChangePwdType = () => {
 // 登录
 const loading = ref(false)
 const loginFormRef = ref(null)
-const { user } = useStore()
-const { login } = user
+const { login } = appStore.useUserStore
 
 const handleLogin = () => {
   // 1.进行表单校验

@@ -8,7 +8,18 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 export default defineConfig({
   base: './',
-
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // 将pinia的全局库实例打包进vendor，避免和页面一起打包造成资源重复引入
+          if (id.includes(path.resolve(__dirname, '/src/stores/index.js'))) {
+            return 'vendor'
+          }
+        }
+      }
+    }
+  },
   // 引入第三方的配置
   optimizeDeps: {
     include: ['axios']
