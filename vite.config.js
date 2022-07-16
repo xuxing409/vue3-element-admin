@@ -30,6 +30,11 @@ export default defineConfig({
         target: 'https://api.imooc-admin.lgdsunday.club/api',
         rewrite: (path) => path.replace(/^\/api/, ''),
         changeOrigin: true
+      },
+      '/prod-api': {
+        target: 'https://api.imooc-admin.lgdsunday.club/api',
+        rewrite: (path) => path.replace(/^\/prod-api/, ''),
+        changeOrigin: true
       }
     }
   },
