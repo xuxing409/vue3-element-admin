@@ -1,10 +1,18 @@
 <template>
   <div class="navbar">
+    <!-- 折叠按钮 -->
+    <hamburger />
+    <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <el-avatar shape="square" :size="40" :src="userInfo.avatar">
+          <el-avatar
+            style="background: none"
+            shape="square"
+            :size="40"
+            :src="userInfo.avatar"
+          >
           </el-avatar>
           <!-- <i class="el-icon-s-tools"></i> -->
           <el-icon><Tools /></el-icon>
@@ -42,6 +50,23 @@ const { logout } = appStore.useUserStore
   position: relative;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .hamburger-container {
+    line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    // hover 动画
+    transition: background 0.5s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+  .breadcrumb-container {
+    float: left;
+  }
+
   .right-menu {
     display: flex;
     align-items: center;

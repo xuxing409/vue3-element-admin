@@ -1,13 +1,13 @@
 #app {
   .main-container {
     min-height: 100%;
-    transition: margin-left 0.28s;
+    transition: margin-left #{$sidebarDuration};
     margin-left: $sideBarWidth;
     position: relative;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
+    transition: width #{$sidebarDuration};
     width: $sideBarWidth !important;
     height: 100%;
     position: fixed;
@@ -55,10 +55,18 @@
       margin-right: 16px;
     }
 
+    // menu 图标折叠后异常消失修复
+    .el-menu--collapse{
+      .svg-icon {
+        margin-right: 0px;
+      }
+    }
+
     .sub-el-icon {
       margin-right: 12px;
-      margin-left: -2px;
+      margin-left: -4px;
     }
+    
 
     .el-menu {
       border: none;

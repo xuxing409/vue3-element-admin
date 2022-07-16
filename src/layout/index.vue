@@ -1,5 +1,8 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="[sidebarOpened ? 'openSidebar' : 'hideSidebar']"
+  >
     <!-- 左侧 menu -->
     <sidebar
       class="sidebar-container"
@@ -18,11 +21,16 @@
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
+import appStore from '@/stores'
+
 import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import variables from '@/styles/variables.module.scss'
-console.log(variables)
+
+// 折叠状态
+const { sidebarOpened } = storeToRefs(appStore.useAppStore)
 </script>
 
 <style lang="scss" scoped>
@@ -35,11 +43,18 @@ console.log(variables)
   height: 100%;
   width: 100%;
 }
+/* 展开 */
 .fixed-header {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 9;
   width: calc(100% - #{$sideBarWidth});
+  transition: width #{$sidebarDuration};
+}
+
+/* 折叠后 */
+.hideSidebar .fixed-header {
+  width: calc(100% - #{$hideSideBarWidth});
 }
 </style>

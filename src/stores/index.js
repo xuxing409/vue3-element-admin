@@ -1,4 +1,6 @@
+import useThemeStore from './theme'
 import useUserStore from './user'
+import useAppStore from './app'
 const appStore = {}
 
 /**
@@ -6,6 +8,8 @@ const appStore = {}
  */
 export const registerStore = () => {
   appStore.useUserStore = useUserStore()
+  appStore.useThemeStore = useThemeStore()
+  appStore.useAppStore = useAppStore()
 }
 
 export default appStore
