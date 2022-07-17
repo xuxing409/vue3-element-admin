@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { getItem, setItem } from '@/utils/storage'
-import { lang } from '@/constant'
+import { LANG } from '@/constant'
 const useAppStore = defineStore('app', () => {
   const sidebarOpened = ref(true)
-  const language = ref(getItem(lang) || 'zh')
+  const language = ref(getItem(LANG) || 'zh')
 
-  const triggerSidebarOpened = (state) => {
+  const triggerSidebarOpened = () => {
     sidebarOpened.value = !sidebarOpened.value
   }
   const setLanguage = (newLanguage) => {
-    setItem(lang, newLanguage)
+    setItem(LANG, newLanguage)
     language.value = newLanguage
   }
   return { sidebarOpened, language, triggerSidebarOpened, setLanguage }

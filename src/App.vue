@@ -7,7 +7,6 @@ import { computed } from 'vue'
 const { language } = storeToRefs(appStore.useAppStore)
 
 const locale = computed(() => (language.value === 'zh' ? zhCn : en))
-
 </script>
 
 <template>

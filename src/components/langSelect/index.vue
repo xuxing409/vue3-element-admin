@@ -50,7 +50,7 @@ const handleSetLanguage = (lang) => {
   // 修改pinia 保存的language
   setLanguage(lang)
 
-  ElMessage.success(`语言成功切换为${lang === 'zh' ? '中文' : '英文'}`)
+  ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))
 }
 </script>
 

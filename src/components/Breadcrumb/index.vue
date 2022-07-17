@@ -7,11 +7,11 @@
       >
         <!-- 不可点击 -->
         <span class="no-redirect" v-if="breadcrumData.length - 1 === index">{{
-          item.meta.title
+          generateTitle(item.meta.title)
         }}</span>
         <!-- 可点击 -->
         <span class="redirect" @click="onLinkClick(item)" v-else>{{
-          item.meta.title
+          generateTitle(item.meta.title)
         }}</span>
       </el-breadcrumb-item>
     </transition-group>
@@ -23,7 +23,7 @@ import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import appStore from '@/stores'
 import { storeToRefs } from 'pinia'
-
+import { generateTitle } from '@/utils/i18n'
 const route = useRoute()
 
 // 生成数组数据
