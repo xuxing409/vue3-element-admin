@@ -1,10 +1,19 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import en from 'element-plus/lib/locale/lang/en'
+import appStore from '@/stores'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+const { language } = storeToRefs(appStore.useAppStore)
+
+const locale = computed(() => (language.value === 'zh' ? zhCn : en))
+
 </script>
 
 <template>
-  <RouterView />
+  <el-config-provider :locale="locale">
+    <RouterView />
+  </el-config-provider>
 </template>
 
 <style>
