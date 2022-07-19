@@ -33,6 +33,7 @@ declare module '@vue/runtime-core' {
     LangSelect: typeof import('./src/components/langSelect/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Screenfull: typeof import('./src/components/Screenfull/index.vue')['default']
     SelectColor: typeof import('./src/components/ThemeSelect/components/SelectColor.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
     ThemeSelect: typeof import('./src/components/ThemeSelect/index.vue')['default']

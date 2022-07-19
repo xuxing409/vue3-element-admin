@@ -4,8 +4,10 @@
     <hamburger />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
-      <theme-select class="right-menu-item hover-effect"></theme-select>
+      <screenfull class="right-menu-item hover-effect" />
+      <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
+
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -42,6 +44,7 @@
 import { storeToRefs } from 'pinia'
 import appStore from '@/stores'
 import ThemeSelect from '@/components/ThemeSelect/index.vue'
+import Screenfull from '@/components/Screenfull/index.vue'
 const { userInfo } = storeToRefs(appStore.useUserStore)
 const { logout } = appStore.useUserStore
 </script>
