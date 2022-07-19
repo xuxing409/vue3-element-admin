@@ -4,9 +4,15 @@ import en from 'element-plus/lib/locale/lang/en'
 import appStore from '@/stores'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
-const { language } = storeToRefs(appStore.useAppStore)
+import { writeNewStyle, generateNewStyle } from '@/utils/theme'
 
+// el plus语言包处理
+const { language } = storeToRefs(appStore.useAppStore)
 const locale = computed(() => (language.value === 'zh' ? zhCn : en))
+
+// 处理刷新后,重新生成主题色css文件
+const { mainColor } = storeToRefs(appStore.useThemeStore)
+generateNewStyle(mainColor.value).then((newStyle) => writeNewStyle(newStyle))
 </script>
 
 <template>
@@ -16,10 +22,4 @@ const locale = computed(() => (language.value === 'zh' ? zhCn : en))
 </template>
 
 <style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-} */
 </style>

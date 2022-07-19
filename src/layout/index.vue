@@ -6,7 +6,7 @@
     <!-- 左侧 menu -->
     <sidebar
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: cssVar.menuBg }"
     />
     <!-- 顶部 navbar -->
     <div class="main-container">
@@ -27,10 +27,10 @@ import appStore from '@/stores'
 import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'
 import Sidebar from './components/Sidebar/index.vue'
-import variables from '@/styles/variables.module.scss'
 
 // 折叠状态
 const { sidebarOpened } = storeToRefs(appStore.useAppStore)
+const { cssVar } = storeToRefs(appStore.useThemeStore)
 </script>
 
 <style lang="scss" scoped>

@@ -4,6 +4,7 @@
     <hamburger />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <theme-select class="right-menu-item hover-effect"></theme-select>
       <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -40,6 +41,7 @@
 <script setup>
 import { storeToRefs } from 'pinia'
 import appStore from '@/stores'
+import ThemeSelect from '@/components/ThemeSelect/index.vue'
 const { userInfo } = storeToRefs(appStore.useUserStore)
 const { logout } = appStore.useUserStore
 </script>
