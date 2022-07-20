@@ -22,8 +22,15 @@ const useAppStore = defineStore('app', () => {
     if (!isFind) {
       tagsViewList.value.push(tag)
       // 数据持久化
-      setItem(TAGS_VIEW, tagsViewList)
+      setItem(TAGS_VIEW, tagsViewList.value)
     }
+  }
+  /**
+   * 为指定的 tag 修改 title
+   */
+  const changeTagsView = ({ index, tag }) => {
+    tagsViewList.value[index] = tag
+    setItem(TAGS_VIEW, tagsViewList.value)
   }
   return {
     sidebarOpened,
@@ -31,7 +38,8 @@ const useAppStore = defineStore('app', () => {
     tagsViewList,
     triggerSidebarOpened,
     setLanguage,
-    addTagsViewList
+    addTagsViewList,
+    changeTagsView
   }
 })
 

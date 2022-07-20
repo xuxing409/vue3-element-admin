@@ -38,7 +38,9 @@ let searchPool = computed(() => {
   const routes = filterRoutes(router.getRoutes())
   return generateRoutes(routes)
 })
-
+/**
+ * 搜索库相关
+ */
 let fuse
 const initFuse = (searchPool) => {
   fuse = new Fuse(searchPool, {
@@ -108,7 +110,7 @@ watch(isShow, (val) => {
     document.body.removeEventListener('click', onClose)
   }
 })
-// 监听语言切换
+// 监听语言切换, 改变headerSearch的数据源
 watchSwitchLang(() => {
   searchPool = computed(() => {
     const routes = filterRoutes(router.getRoutes())

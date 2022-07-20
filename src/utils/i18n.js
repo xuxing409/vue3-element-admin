@@ -3,6 +3,7 @@ import { watch } from 'vue'
 import appStore from '@/stores'
 import { storeToRefs } from 'pinia'
 
+// 国际化处理
 export function generateTitle(title) {
   return i18n.global.t('msg.route.' + title)
 }
@@ -13,10 +14,8 @@ export function generateTitle(title) {
  */
 export function watchSwitchLang(...cbs) {
   const { language } = storeToRefs(appStore.useAppStore)
-  watch(
-    () => language,
-    () => {
-      cbs.forEach((cb) => cb(language))
-    }
-  )
+
+  watch(language, () => {
+    cbs.forEach((cb) => cb(language))
+  })
 }

@@ -39,6 +39,7 @@ declare module '@vue/runtime-core' {
     Screenfull: typeof import('./src/components/Screenfull/index.vue')['default']
     SelectColor: typeof import('./src/components/ThemeSelect/components/SelectColor.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
+    TagsView: typeof import('./src/components/TagsView/index.vue')['default']
     ThemeSelect: typeof import('./src/components/ThemeSelect/index.vue')['default']
   }
 }

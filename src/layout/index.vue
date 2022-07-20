@@ -13,9 +13,12 @@
       <!-- 顶部 navbar -->
       <div class="fixed-header">
         <navbar />
+        <!-- tag -->
+        <tags-view />
       </div>
+
       <!-- 内容区 -->
-      <app-main></app-main>
+      <app-main />
     </div>
   </div>
 </template>
@@ -27,7 +30,7 @@ import appStore from '@/stores'
 import Navbar from './components/Navbar.vue'
 import AppMain from './components/AppMain.vue'
 import Sidebar from './components/Sidebar/index.vue'
-
+import TagsView from '@/components/TagsView/index.vue'
 // 折叠状态
 const { sidebarOpened } = storeToRefs(appStore.useAppStore)
 const { cssVar } = storeToRefs(appStore.useThemeStore)
