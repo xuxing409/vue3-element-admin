@@ -19,6 +19,7 @@ app.use(createPinia())
 registerStore()
 // 注册svg-icon
 installIcons(app)
+
 // 注册element-plus icon
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)

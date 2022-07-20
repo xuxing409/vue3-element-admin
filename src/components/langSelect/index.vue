@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import {} from 'vue'
 import appStore from '@/stores'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'

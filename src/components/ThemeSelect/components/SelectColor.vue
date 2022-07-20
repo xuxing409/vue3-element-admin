@@ -23,7 +23,7 @@
 
 <script setup>
 import { storeToRefs } from 'pinia'
-import { defineProps, defineEmits, ref } from 'vue'
+import { defineEmits, ref } from 'vue'
 import appStore from '@/stores'
 import { writeNewStyle, generateNewStyle } from '@/utils/theme'
 defineProps({

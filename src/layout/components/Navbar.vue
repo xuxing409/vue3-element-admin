@@ -4,6 +4,7 @@
     <hamburger />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <header-search class="right-menu-item hover-effect" />
       <screenfull class="right-menu-item hover-effect" />
       <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
@@ -45,6 +46,7 @@ import { storeToRefs } from 'pinia'
 import appStore from '@/stores'
 import ThemeSelect from '@/components/ThemeSelect/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
+import HeaderSearch from '@/components/HeaderSearch/index.vue'
 const { userInfo } = storeToRefs(appStore.useUserStore)
 const { logout } = appStore.useUserStore
 </script>

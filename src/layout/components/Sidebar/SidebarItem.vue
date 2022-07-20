@@ -20,7 +20,7 @@
 
 <script setup>
 import MenuItem from './MenuItem.vue'
-import { defineProps } from 'vue'
+import { } from 'vue'
 
 defineProps({
   route: {
