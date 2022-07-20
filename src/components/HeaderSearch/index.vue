@@ -108,7 +108,7 @@ watch(isShow, (val) => {
     document.body.removeEventListener('click', onClose)
   }
 })
-
+// 监听语言切换
 watchSwitchLang(() => {
   searchPool = computed(() => {
     const routes = filterRoutes(router.getRoutes())
