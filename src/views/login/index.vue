@@ -63,6 +63,7 @@ import { ref, computed } from 'vue'
 import { validatePassword } from './rules'
 import appStore from '@/stores'
 import { useI18n } from 'vue-i18n'
+import LangSelect from '@/components/LangSelect/index.vue'
 const i18n = useI18n()
 const usernameRuleMessage = computed(() => i18n.t('msg.login.usernameRule'))
 

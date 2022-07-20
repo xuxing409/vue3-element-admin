@@ -32,6 +32,34 @@ const useAppStore = defineStore('app', () => {
     tagsViewList.value[index] = tag
     setItem(TAGS_VIEW, tagsViewList.value)
   }
+  /**
+   *
+   * @param {type: 'other' || 'right' || 'index'} paylod
+   */
+  const removeTagsView = (payload) => {
+    switch (payload.type) {
+      case 'index':
+        tagsViewList.value.splice(payload.index, 1)
+        break
+      case 'other':
+        tagsViewList.value.splice(
+          payload.index + 1,
+          tagsViewList.value.length - payload.index + 1
+        )
+        tagsViewList.value.splice(0, payload.index)
+        break
+      case 'right':
+        tagsViewList.value.splice(
+          payload.index + 1,
+          tagsViewList.value.length - payload.index + 1
+        )
+        break
+
+      default:
+        break
+    }
+    setItem(TAGS_VIEW, tagsViewList.value)
+  }
   return {
     sidebarOpened,
     language,
@@ -39,7 +67,8 @@ const useAppStore = defineStore('app', () => {
     triggerSidebarOpened,
     setLanguage,
     addTagsViewList,
-    changeTagsView
+    changeTagsView,
+    removeTagsView
   }
 })
 

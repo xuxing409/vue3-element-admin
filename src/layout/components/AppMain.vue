@@ -1,6 +1,13 @@
 <template>
   <div class="app-main">
-    <router-view />
+    <router-view v-slot="{ Component, route }">
+      <!-- 带有切换动画，并且具有组件缓存 -->
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive>
+          <component :is="Component" :key="route.path"></component>
+        </keep-alive>
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -59,11 +66,11 @@ watchSwitchLang(() => {
 
 <style lang="scss" scoped>
 .app-main {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px - 43px);
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 61px 20px 20px 20px;
+  padding: 104px 20px 20px 20px;
   box-sizing: border-box;
 }
 </style>

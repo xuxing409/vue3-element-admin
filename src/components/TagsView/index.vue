@@ -10,20 +10,29 @@
         backgroundColor: isActive(tag) ? cssVar.menuBg : '',
         borderColor: isActive(tag) ? cssVar.menuBg : ''
       }"
+      @contextmenu.prevent="openMenu($event, index)"
     >
       {{ tag.title }}
-      <el-icon v-show="!isActive(tag)" @click="onCloseClick(index)"
+      <el-icon v-show="!isActive(tag)" @click.prevent.stop="onCloseClick(index)"
         ><Close
       /></el-icon>
     </router-link>
+
+    <context-menu
+      @close="closeMenu"
+      :style="position"
+      :index="selectIndex"
+      v-show="visible"
+    />
   </div>
 </template>
 
 <script setup>
-import {} from 'vue'
+import { ref, reactive, watch } from 'vue'
 import appStore from '@/stores'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
+import ContextMenu from './ContextMenu.vue'
 const { tagsViewList } = storeToRefs(appStore.useAppStore)
 const { cssVar } = storeToRefs(appStore.useThemeStore)
 
@@ -31,8 +40,38 @@ const route = useRoute()
 const isActive = (tag) => {
   return tag.path === route.path
 }
+// 关闭tag 的点击事件
+const { removeTagsView } = appStore.useAppStore
+const onCloseClick = (index) => {
+  console.log(index)
+  removeTagsView({ type: 'index', index })
+}
 
-const onCloseClick = (index) => {}
+// 鼠标右键
+const visible = ref(false)
+const position = reactive({
+  top: '',
+  left: ''
+})
+const selectIndex = ref(0)
+const openMenu = (e, index) => {
+  const { x, y } = e
+  position.left = x + 'px'
+  position.top = y + 'px'
+  selectIndex.value = index
+  visible.value = true
+}
+const closeMenu = () => {
+  visible.value = false
+}
+// 点击其他位置处理
+watch(visible, (val) => {
+  if (val) {
+    document.body.addEventListener('click', closeMenu)
+  } else {
+    document.body.addEventListener('click', closeMenu)
+  }
+})
 </script>
 
 <style lang="scss" scoped>

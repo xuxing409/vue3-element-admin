@@ -44,7 +44,10 @@
 <script setup>
 import { storeToRefs } from 'pinia'
 import appStore from '@/stores'
+import Hamburger from '@/components/Hamburger/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import ThemeSelect from '@/components/ThemeSelect/index.vue'
+import LangSelect from '@/components/LangSelect/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
 import HeaderSearch from '@/components/HeaderSearch/index.vue'
 const { userInfo } = storeToRefs(appStore.useUserStore)
