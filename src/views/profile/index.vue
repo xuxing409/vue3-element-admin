@@ -1,21 +1,51 @@
 <template>
-  <div class="">{{ $t('msg.test') }}</div>
-  <el-pagination
-    :page-size="100"
-    layout="total, prev, pager, next"
-    :total="1000"
-  />
-  <el-button>Default</el-button>
-  <el-button type="primary">Primary</el-button>
-  <el-button type="success">Success</el-button>
-  <el-button type="info">Info</el-button>
-  <el-button type="warning">Warning</el-button>
-  <el-button type="danger">Danger</el-button>
-  <el-button>中文</el-button>
+  <div class="my-container">
+    <el-row>
+      <el-col :span="6">
+        <project-card
+          :features="featureData"
+          class="project-card"
+        ></project-card>
+      </el-col>
+      <el-col :span="18">
+        <el-card>
+          <el-tabs v-model="activeName">
+            <el-tab-pane :label="$t('msg.profile.feature')" name="feature">
+              <feature :features="featureData" />
+            </el-tab-pane>
+            <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">
+              <chapter />
+            </el-tab-pane>
+            <el-tab-pane :label="$t('msg.profile.author')" name="author">
+              <author />
+            </el-tab-pane>
+          </el-tabs>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script setup>
-import {} from 'vue'
+import { ref } from 'vue'
+import ProjectCard from './components/ProjectCard.vue'
+import { feature } from '@/api/user'
+import { watchSwitchLang } from '@/utils/i18n'
+const activeName = ref('feature')
+const featureData = ref([])
+const getFeatureData = async () => {
+  featureData.value = await feature()
+}
+getFeatureData()
+
+// 处理功能接口国际化
+watchSwitchLang(() => {
+  getFeatureData()
+})
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.project-card {
+  margin-right: 20px;
+}
+</style>

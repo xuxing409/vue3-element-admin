@@ -18,6 +18,7 @@ service.interceptors.request.use(
     config.headers.icode = icode
     config.headers.codeType = time
     const { token } = storeToRefs(appStore.useUserStore)
+    const { language } = storeToRefs(appStore.useAppStore)
     const { logout } = appStore.useUserStore
     // 在这个位置需要统一的去注入token
     if (token.value) {
@@ -30,7 +31,7 @@ service.interceptors.request.use(
       }
     }
     // 配置接口国际化
-    // config.headers['Accept-Language'] = store.getters.language
+    config.headers['Accept-Language'] = language.value
     return config // 必须返回配置
   },
   (error) => {
