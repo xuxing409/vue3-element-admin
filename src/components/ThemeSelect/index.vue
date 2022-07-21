@@ -7,7 +7,7 @@
   >
     <!-- 图标 -->
     <div>
-      <el-tooltip :content="$t('msg.narBar.themeChange')">
+      <el-tooltip id="guide-theme" :content="$t('msg.narBar.themeChange')">
         <svg-icon icon="change-theme"></svg-icon>
       </el-tooltip>
     </div>
@@ -36,6 +36,4 @@ const handleSetTheme = (command) => {
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

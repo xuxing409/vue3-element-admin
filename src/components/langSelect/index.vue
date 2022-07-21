@@ -5,7 +5,7 @@
     @command="handleSetLanguage"
   >
     <div>
-      <el-tooltip content="国际化" :effect="effect">
+      <el-tooltip id="guide-lang" content="国际化" :effect="effect">
         <svg-icon icon="language"></svg-icon>
       </el-tooltip>
     </div>

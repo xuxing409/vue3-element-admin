@@ -5,9 +5,16 @@
     :style="styleExternalIcon"
     class="svg-external-icon svg-icon"
     :class="className"
+    @click="onClick"
   ></div>
   <!-- 展示内部图标 -->
-  <svg v-else class="svg-icon" :class="className" aria-hidden="true">
+  <svg
+    v-else
+    class="svg-icon"
+    :class="className"
+    @click="onClick"
+    aria-hidden="true"
+  >
     <use :xlink:href="iconName" />
   </svg>
 </template>
@@ -27,6 +34,10 @@ const props = defineProps({
     default: ''
   }
 })
+const emit = defineEmits(['click'])
+const onClick = () => {
+  emit('click')
+}
 /**
  * 判断当前图标是否为外部图标
  */

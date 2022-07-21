@@ -1,7 +1,7 @@
 <template>
   <div class="header-search" :class="{ show: isShow }">
     <!-- stop阻止冒泡到body -->
-    <span @click.stop="onShowClick">
+    <span id="guide-search" @click.stop="onShowClick">
       <svg-icon class-name="search-icon" icon="search"></svg-icon>
     </span>
     <el-select
@@ -46,6 +46,8 @@ const initFuse = (searchPool) => {
   fuse = new Fuse(searchPool, {
     // 是否按优先级进行排序
     shouldSort: true,
+    // 匹配算法放弃的时机， 阈值 0.0 需要完美匹配（字母和位置），阈值 1.0 将匹配任何内容。
+    threshold: 0.4,
     // 匹配长度超过这个值的才会被认为是匹配的
     minMatchCharLength: 1,
     // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。

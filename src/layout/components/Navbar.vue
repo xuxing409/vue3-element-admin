@@ -2,8 +2,9 @@
   <div class="navbar">
     <!-- 折叠按钮 -->
     <hamburger />
-    <breadcrumb class="breadcrumb-container" />
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container" />
     <div class="right-menu">
+      <guide class="right-menu-item hover-effect" />
       <header-search class="right-menu-item hover-effect" />
       <screenfull class="right-menu-item hover-effect" />
       <theme-select class="right-menu-item hover-effect" />
