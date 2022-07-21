@@ -1,7 +1,7 @@
 <template>
-  <div id="guide-start">
+  <div>
     <el-tooltip :content="$t('msg.navBar.guide')">
-      <svg-icon icon="guide" @click="onClick" />
+      <svg-icon id="guide-start" icon="guide" @click="onClick" />
     </el-tooltip>
   </div>
 </template>
@@ -20,6 +20,7 @@ onMounted(() => {
   driver = new Driver({
     // 禁止点击蒙版关闭
     allowClose: false,
+    animate: false,
     closeBtnText: i18n.t('msg.guide.close'),
     nextBtnText: i18n.t('msg.guide.next'),
     prevBtnText: i18n.t('msg.guide.prev')

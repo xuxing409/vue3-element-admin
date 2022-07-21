@@ -1,8 +1,12 @@
 <template>
   <div class="header-search" :class="{ show: isShow }">
     <!-- stop阻止冒泡到body -->
-    <span id="guide-search" @click.stop="onShowClick">
-      <svg-icon class-name="search-icon" icon="search"></svg-icon>
+    <span @click.stop="onShowClick">
+      <svg-icon
+        id="guide-search"
+        class-name="search-icon"
+        icon="search"
+      ></svg-icon>
     </span>
     <el-select
       ref="headerSearchSelectRef"

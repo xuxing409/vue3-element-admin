@@ -4,6 +4,7 @@
       <el-breadcrumb-item
         v-for="(item, index) in breadcrumData"
         :key="item.path"
+
       >
         <!-- 不可点击 -->
         <span class="no-redirect" v-if="breadcrumData.length - 1 === index">{{

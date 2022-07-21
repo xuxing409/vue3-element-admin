@@ -5,8 +5,8 @@
     @command="handleSetLanguage"
   >
     <div>
-      <el-tooltip id="guide-lang" content="国际化" :effect="effect">
-        <svg-icon icon="language"></svg-icon>
+      <el-tooltip content="国际化" :effect="effect">
+        <svg-icon id="guide-lang" icon="language"></svg-icon>
       </el-tooltip>
     </div>
     <template #dropdown>

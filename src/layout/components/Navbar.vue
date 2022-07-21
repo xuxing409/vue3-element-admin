@@ -7,7 +7,7 @@
       <guide class="right-menu-item hover-effect" />
       <header-search class="right-menu-item hover-effect" />
       <screenfull class="right-menu-item hover-effect" />
-      <theme-select class="right-menu-item hover-effect" />
+      <theme-select id="guide-theme" class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
 
       <!-- 头像 -->

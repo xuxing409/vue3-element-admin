@@ -5,6 +5,7 @@
     :style="styleExternalIcon"
     class="svg-external-icon svg-icon"
     :class="className"
+    v-bind="$attrs"
     @click="onClick"
   ></div>
   <!-- 展示内部图标 -->
@@ -13,6 +14,7 @@
     class="svg-icon"
     :class="className"
     @click="onClick"
+    v-bind="$attrs"
     aria-hidden="true"
   >
     <use :xlink:href="iconName" />
