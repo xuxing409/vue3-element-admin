@@ -6,9 +6,13 @@
       </div>
     </template>
     <div class="user-profile">
-      <!-- 头像 -->
+      <!-- 头像  :image="userInfo.avatar"-->
       <div class="box-center">
-        <pan-thumb :image="userInfo.avatar" height="100px" width="100px">
+        <pan-thumb
+          image="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
+          height="100px"
+          width="100px"
+        >
           <div>Hello</div>
           {{ userInfo.title }}
         </pan-thumb>

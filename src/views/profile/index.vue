@@ -13,9 +13,9 @@
             <el-tab-pane :label="$t('msg.profile.feature')" name="feature">
               <feature :features="featureData" />
             </el-tab-pane>
-            <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">
+            <!-- <el-tab-pane :label="$t('msg.profile.chapter')" name="chapter">
               <chapter />
-            </el-tab-pane>
+            </el-tab-pane> -->
             <el-tab-pane :label="$t('msg.profile.author')" name="author">
               <author />
             </el-tab-pane>
@@ -29,12 +29,15 @@
 <script setup>
 import { ref } from 'vue'
 import ProjectCard from './components/ProjectCard.vue'
-import { feature } from '@/api/user'
+import { getFeature } from '@/api/user'
 import { watchSwitchLang } from '@/utils/i18n'
+import Feature from './components/Feature.vue'
+// import Chapter from './components/Chapter.vue'
+import Author from './components/Author.vue'
 const activeName = ref('feature')
 const featureData = ref([])
 const getFeatureData = async () => {
-  featureData.value = await feature()
+  featureData.value = await getFeature()
 }
 getFeatureData()
 

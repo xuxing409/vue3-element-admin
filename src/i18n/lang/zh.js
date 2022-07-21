@@ -15,7 +15,7 @@ export default {
     导入用户账号：
     可使用导入的用户名登录 
     密码统一为：123456  
-    <b>注意：导入用户区分中英文库！！！！
+    注意：导入用户区分中英文库！！！！
     `
   },
   route: {
@@ -58,7 +58,11 @@ export default {
     guide: '功能引导',
     home: '首页',
     course: '课程主页',
-    logout: '退出登录'
+    logout: '退出登录',
+    projectAddress: '项目地址',
+    cloudMusic: '星星云音乐项目',
+    superMall: '蘑菇街项目',
+    jira: 'jira任务管理系统'
   },
   guide: {
     close: '关闭',
@@ -91,10 +95,9 @@ export default {
     feature: '功能',
     chapter: '章节',
     author: '作者',
-    name: 'Sunday',
+    name: 'Sny',
     job: '一个前端开发程序猿',
-    Introduction:
-      '高级技术专家，曾就职于国内一线互联网公司，统筹过的多个大型项目用户数已过千万级。致力于研究大前端技术，多次受邀参加国内前端技术分享会，如：2018 年 Google 中国技术分享会。'
+    Introduction: '热爱前端，最近在学习React，热衷优雅的代码，优雅永不过时'
   },
   userInfo: {
     print: '打印',

@@ -58,7 +58,11 @@ export default {
     guide: 'Function Guide',
     home: 'Home',
     course: 'Course homepage',
-    logout: 'Log out'
+    logout: 'Log out',
+    projectAddress: 'Project Address',
+    cloudMusic: 'Star Cloud Music Projects',
+    superMall: 'Mushroom Street Projects',
+    jira: 'Jira Task Management System'
   },
   guide: {
     close: 'close',
@@ -92,10 +96,10 @@ export default {
     feature: 'Feature',
     chapter: 'Chapter',
     author: 'Author',
-    name: 'Sunday',
+    name: 'Sny',
     job: 'A front-end development program',
     Introduction:
-      'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.'
+      'Passionate about the front end, passionate about elegant code, elegance never goes out of style, and recently learned React.'
   },
   userInfo: {
     print: 'Print',

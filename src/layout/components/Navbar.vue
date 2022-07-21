@@ -13,14 +13,14 @@
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
+          <!-- userInfo.avatar -->
           <el-avatar
             style="background: none"
             shape="square"
             :size="40"
-            :src="userInfo.avatar"
+            src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
           >
           </el-avatar>
-          <!-- <i class="el-icon-s-tools"></i> -->
           <el-icon><Tools /></el-icon>
         </div>
 
@@ -29,9 +29,38 @@
             <router-link to="/">
               <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
             </router-link>
-            <a target="__blank" href="#">
-              <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
+            <!-- 项目地址 -->
+            <a
+              target="__blank"
+              href="https://github.com/xuxing409/vue3-element-admin"
+            >
+              <el-dropdown-item>{{
+                $t('msg.navBar.projectAddress')
+              }}</el-dropdown-item>
             </a>
+            <!-- 云音乐地址 -->
+            <a
+              target="__blank"
+              href="https://cloud-web-music.vercel.app/#/discover/recommend"
+            >
+              <el-dropdown-item divided>{{
+                $t('msg.navBar.cloudMusic')
+              }}</el-dropdown-item>
+            </a>
+            <!-- jira任务管理系统地址 -->
+            <a target="__blank" href="https://xuxing409.github.io/projects">
+              <el-dropdown-item>{{ $t('msg.navBar.jira') }}</el-dropdown-item>
+            </a>
+            <!-- 蘑菇街项目地址 -->
+            <a
+              target="__blank"
+              href="https://supermall-eight.vercel.app/#/home"
+            >
+              <el-dropdown-item>{{
+                $t('msg.navBar.superMall')
+              }}</el-dropdown-item>
+            </a>
+
             <el-dropdown-item @click="logout" divided>
               {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
@@ -43,15 +72,9 @@
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia'
+// import { storeToRefs } from 'pinia'
 import appStore from '@/stores'
-import Hamburger from '@/components/Hamburger/index.vue'
-import Breadcrumb from '@/components/Breadcrumb/index.vue'
-import ThemeSelect from '@/components/ThemeSelect/index.vue'
-import LangSelect from '@/components/LangSelect/index.vue'
-import Screenfull from '@/components/Screenfull/index.vue'
-import HeaderSearch from '@/components/HeaderSearch/index.vue'
-const { userInfo } = storeToRefs(appStore.useUserStore)
+// const { userInfo } = storeToRefs(appStore.useUserStore)
 const { logout } = appStore.useUserStore
 </script>
 
