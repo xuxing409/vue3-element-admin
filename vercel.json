@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/prod-api/(.*)",
+      "destination": "/prod-api/proxy"
+    }
+  ]
+}
