@@ -1,5 +1,5 @@
 <template>
-  <!-- 展示外部图标 -->
+  <!-- 展示外部地址图标 -->
   <div
     v-if="isExternal"
     :style="styleExternalIcon"
@@ -8,7 +8,7 @@
     v-bind="$attrs"
     @click="onClick"
   ></div>
-  <!-- 展示内部图标 -->
+  <!-- 展示内部静态资源图标 -->
   <svg
     v-else
     class="svg-icon"

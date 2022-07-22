@@ -2,7 +2,9 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary">{{ $t('msg.excel.importExcel') }}</el-button>
+        <el-button type="primary" @click="onImportExcelClick">{{
+          $t('msg.excel.importExcel')
+        }}</el-button>
         <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
       </div>
     </el-card>
@@ -81,9 +83,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onActivated } from 'vue'
 import { getUserManageList } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
+import { useRouter } from 'vue-router'
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
@@ -103,13 +106,24 @@ getListData()
 watchSwitchLang(getListData)
 
 // 页发生改变
-const handleSizeChange = () => {
+const handleSizeChange = (currentSize) => {
+  size.value = currentSize
   getListData()
 }
 // 当前页改变
-const handleCurrentChange = () => {
+const handleCurrentChange = (currentPage) => {
+  page.value = currentPage
   getListData()
 }
+
+// excel导入按钮点击事件
+const router = useRouter()
+const onImportExcelClick = () => {
+  router.push('/user/import')
+}
+
+// keep-alive 下 onActivated 组件重新活跃后调用
+onActivated(getListData)
 </script>
 
 <style lang="scss" scoped>
