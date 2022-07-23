@@ -58,9 +58,12 @@
           width="260"
         >
           <template #default="{ row }">
-            <el-button type="primary" size="mini">{{
-              $t('msg.excel.show')
-            }}</el-button>
+            <el-button
+              type="primary"
+              size="mini"
+              @click="onShowClick(row._id)"
+              >{{ $t('msg.excel.show') }}</el-button
+            >
             <el-button type="info" size="mini">{{
               $t('msg.excel.showRole')
             }}</el-button>
@@ -123,7 +126,11 @@ const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
 }
-
+// 查看用户详情
+const router = useRouter()
+const onShowClick = (id) => {
+  router.push(`/user/info/${id}`)
+}
 // 删除用户
 const i18n = useI18n()
 const onRemoveClick = (row) => {
@@ -143,7 +150,6 @@ const onRemoveClick = (row) => {
 }
 
 // excel导入按钮点击事件
-const router = useRouter()
 const onImportExcelClick = () => {
   router.push('/user/import')
 }

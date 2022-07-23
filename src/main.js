@@ -15,6 +15,8 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import i18n from '@/i18n'
 // 全局属性
 import installFilter from '@/filter/index.js'
+// 指令
+import installDirective from '@/directives'
 const app = createApp(App)
 // 注册小菠萝
 app.use(createPinia())
@@ -24,7 +26,7 @@ registerStore()
 installIcons(app)
 // 注册全局属性
 installFilter(app)
-
+installDirective(app)
 // 注册element-plus icon
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
