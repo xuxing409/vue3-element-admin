@@ -5,7 +5,9 @@
         <el-button type="primary" @click="onImportExcelClick">{{
           $t('msg.excel.importExcel')
         }}</el-button>
-        <el-button type="success">{{ $t('msg.excel.exportExcel') }}</el-button>
+        <el-button type="success" @click="onToExcelClick">{{
+          $t('msg.excel.exportExcel')
+        }}</el-button>
       </div>
     </el-card>
 
@@ -55,14 +57,14 @@
           fixed="right"
           width="260"
         >
-          <template #default>
+          <template #default="{ row }">
             <el-button type="primary" size="mini">{{
               $t('msg.excel.show')
             }}</el-button>
             <el-button type="info" size="mini">{{
               $t('msg.excel.showRole')
             }}</el-button>
-            <el-button type="danger" size="mini">{{
+            <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{
               $t('msg.excel.remove')
             }}</el-button>
           </template>
@@ -79,14 +81,18 @@
         :total="total"
       ></el-pagination>
     </el-card>
+    <export-to-excel v-model="exportToExcelVisible" />
   </div>
 </template>
 
 <script setup>
 import { ref, onActivated } from 'vue'
-import { getUserManageList } from '@/api/user-manage'
+import { getUserManageList, deleteUser } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import ExportToExcel from './components/Export2Excel.vue'
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
@@ -102,6 +108,8 @@ const getListData = async () => {
   total.value = result.total
 }
 getListData()
+// keep-alive 下 onActivated 组件重新活跃后调用
+onActivated(getListData)
 // 国际化接口处理
 watchSwitchLang(getListData)
 
@@ -116,14 +124,35 @@ const handleCurrentChange = (currentPage) => {
   getListData()
 }
 
+// 删除用户
+const i18n = useI18n()
+const onRemoveClick = (row) => {
+  ElMessageBox.confirm(
+    i18n.t('msg.excel.dialogTitle1') +
+      '' +
+      row.username +
+      i18n.t('msg.excel.dialogTitle2'),
+    {
+      type: 'warning'
+    }
+  ).then(async () => {
+    await deleteUser(row._id)
+    ElMessage.success(i18n.t('msg.excel.removeSuccess'))
+    getListData()
+  })
+}
+
 // excel导入按钮点击事件
 const router = useRouter()
 const onImportExcelClick = () => {
   router.push('/user/import')
 }
 
-// keep-alive 下 onActivated 组件重新活跃后调用
-onActivated(getListData)
+// 导出
+const exportToExcelVisible = ref(false)
+const onToExcelClick = () => {
+  exportToExcelVisible.value = true
+}
 </script>
 
 <style lang="scss" scoped>

@@ -4,8 +4,11 @@ import { getItem, setItem } from '@/utils/storage'
 import { LANG, TAGS_VIEW } from '@/constant'
 const useAppStore = defineStore('app', () => {
   const sidebarOpened = ref(true)
-  const language = ref(getItem(LANG) || 'zh')
-  const tagsViewList = ref(getItem(TAGS_VIEW) || [])
+  const language = ref('')
+  const tagsViewList = ref([])
+
+  language.value = getItem(LANG) || 'zh'
+  tagsViewList.value = getItem(TAGS_VIEW) || []
 
   const triggerSidebarOpened = () => {
     sidebarOpened.value = !sidebarOpened.value
